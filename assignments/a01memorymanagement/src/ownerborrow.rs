@@ -2,18 +2,23 @@
 
 
 pub fn is_five(x: &i32) -> bool {
-    // Your implementation goes here
+    // Return result of comparing dereferenced x to 5
+    return *x == 5
+    
 }
 
 
 fn swap(a: &mut i32, b: &mut i32) {
-    // Implement this function
+    // Using tuple, swaps values
+    (*a,*b) = (*b,*a);
 }
 
 
 
 fn add_and_multiply(a: &i32, b: &mut i32) {
-    // Implement this function
+    // Sets value of b to (a + b) * 2
+    *b = (*a + *b) * 2 
+    
 }
 
 
