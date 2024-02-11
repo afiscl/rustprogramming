@@ -6,8 +6,8 @@ mod implement;
 
 fn main(){
 
-    let name = "Not provided";
-    let course = "Not Provided";
+    let name = "Alex Fiscal";
+    let course = "CSCI-3334-01-Spring2024";
 
     println!("Assignment");
     println!("{}",name);
