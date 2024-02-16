@@ -19,32 +19,40 @@ struct Book {
 
 impl Book {
     fn new(title: String, author: String) -> Self {
-        
-    }
+        Self {
+            title,
+            author,
+            status: BookStatus::Available,
+        }
+    }   
 
     fn check_out(&mut self, days: i32) {
-        
+        self.status = BookStatus::CheckedOut(days);
     }
 
     fn return_book(&mut self) {
-        
+        self.status = BookStatus::Available;
     }
 
     fn send_for_repair(&mut self, notes: String) {
-        
+        self.status = BookStatus::InRepair(notes);
     }
 
     fn mark_as_being_read(&mut self) {
-        
+        self.status = BookStatus::BeingRead;
     }
 
     fn report_lost(&mut self) {
-        todo();
+        self.status = BookStatus::Lost;
     }
 
     fn display_status(&self) -> String {
         match &self.status {
             BookStatus::Available => format!("{} is available for borrowing.", self.title),
+            BookStatus::CheckedOut(days) => format!("{} is checked out. Days until due: {}", self.title, days),
+            BookStatus::BeingRead => format!("{} is currently being read.", self.title),
+            BookStatus::InRepair(repair) => format!("{} is in repair. Notes: {}", self.title, repair),
+            BookStatus::Lost => format!("{} has been reported lost.", self.title),
             // keep covering cases
 
         }
